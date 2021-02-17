@@ -1,0 +1,67 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="header" xmlns:th="http://www.thymeleaf.org" th:fragment="header">
+    <div class="header_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                        <span><i class="fas fa-envelope mr-2"></i>duongvietdung0603@gmail.com<i
+                                class="fas fa-phone-square mr-2 ml-4"></i> 0399896333</span>
+                </div>
+                <div class="col-6 text-right">
+                    <form th:action="@{/search}" method="POST">
+                        <input type="text" th:value="${search}" placeholder="Search..." class="header_top_search mr-4" name="search">
+
+                    <span th:unless="${#request.userPrincipal != null}"><a th:href=@{'/login'}>Login</a> / <a th:href=@{'/dang-ki'}>Register</a></span>
+                    <span th:if="${#request.userPrincipal != null}">
+                        <a th:href=@{'/don-hang'} th:utext="${#request.userPrincipal.name}">Login</a> / <a th:href=@{'/logout'}>Logout</a>
+                    </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header_bottom mb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <div class="logo">
+                        <a href=""> <img src="../img/logo.png"></a>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="menu">
+                        <ul>
+                            <li><a th:href=@{'/'}><i class="fas fa-home"></i> Trang chủ</a></li>
+                            <li><a th:href=@{'/danh-sach'}>Sản phẩm</a></li>
+                            <li><a th:href=@{'/gioi-thieu'}>Giới thiệu</a></li>
+                            <li><a th:href=@{'/lien-he'}>Liên hệ</a></li>
+                            <li><a th:href=@{'/chinh-sach'}>Chính sách</a></li>
+                            <li><a th:href=@{'/blog'}>Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-1">
+                        <span class="btn ml-3 header_card_v1">
+                            <i class="fas fa-shopping-cart mr-1"></i>
+                            <span th:text="${session.card_soLuong}">2</span>
+                            <div class="header_card_v2">
+                                <div class="d-flex mb-2" th:each="item : ${session.card}">
+                                    <div class="header_cart_v2_anh">
+                                        <img src="../img/sp_1.jpg" th:src="@{'/img/san_pham/'+${item.sanPham.img}}">
+                                    </div>
+                                    <div class="flex-grow-1 header_cart_v2_content pl-2">
+                                        <h4 th:text="${item.sanPham.name}">Tên sản phẩm</h4>
+                                        <h5 th:text="${item.soLuong} + 'x' + ${item.sanPham.giaTien}">5 x 100</h5>
+                                    </div>
+                                </div>
+                                <a class="btn btn-danger btn-block mt-4" th:href=@{'/gio-hang'}>
+                                    Giỏ hàng
+                                </a>
+                            </div>
+                        </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

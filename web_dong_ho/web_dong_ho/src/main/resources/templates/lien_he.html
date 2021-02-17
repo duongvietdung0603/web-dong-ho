@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+    <!-- link css -->
+    <link rel="stylesheet" href="../static/css/header.css" th:href="@{/css/header.css}">
+    <link rel="stylesheet" href="../static/css/footer.css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="../static/css/lien_he.css" th:href="@{/css/lien_he.css}">
+</head>
+
+<body>
+    <!-- header  -->
+    <div class="header" th:include="Layout/header::header"></div>
+    <!-- end header  -->
+
+
+    <!-- mai  -->
+    <div class="main container">
+        <div class="row">
+            <div class="col-12">
+                <div class="title_khung">
+                    <h5>Liên hệ</h5>
+                </div>
+                <div class="content_khung">
+                    <div id="map" style="width: 100%; height: 500px">
+                    </div>
+                    <div class="gioi_thieu">
+                        <div class="row">
+                            <div class="col-6">
+                                <h4 class="title">Liên hệ ngay</h4>
+                                <div class="mb-2"><span>Địa chỉ: 183 Lê Duẫn, thành phố Vinh</span></div>
+                                <div class="mb-2"><span>Số điện thoại: 0987654321</span></div>
+                                <div class="mb-2"><span>Email: 0987654321@gmail.com</span></div>
+                                <div class="mb-2"><span>Website: ok.net</span></div>
+                            </div>
+                            <div class="col-6">
+                                <h4 class="title">Để lại lời nhắn</h4>
+                                <div class="form-row">
+                                    <div class="col-12 mb-3">
+                                        <label>Họ Tên</label>
+                                        <input type="text" class="form-control" id="validationDefault03">
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label>Số điện thoại</label>
+                                        <input type="text" class="form-control" id="validationDefault03">
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" id="validationDefault03">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label>Nội dung:</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <button class="button_big">Gửi đi</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- end mai  -->
+    <!-- footer  -->
+    <div th:include="Layout/footer::footer"></div>
+    <!-- end footer  -->
+
+    <script>
+        var map;
+        function InitializeMap() {
+            var latlng = new google.maps.LatLng(18.65923198225032, 105.69592172792447);
+            var myOptions = {
+                zoom: 10,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map"), myOptions);
+        }
+        window.onload = InitializeMap;
+        var bikeLayer = new google.maps.BicyclingLayer();
+        bikeLayer.setMap(map);
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOX6MVMCYgaojTvqBmbj8wLSYxdd3ZsC8&callback=initMap"
+        type="text/javascript"></script>
+</body>
+
+</html>

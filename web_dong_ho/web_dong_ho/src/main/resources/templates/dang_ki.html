@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Dashboard</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" th:href="@{/css/dang_nhap.css}" href="../static/css/dang_nhap.css">
+
+
+</head>
+
+<body>
+<div class="main">
+    <div class="signup">
+        <h1 class="signup-heading">Đăng kí</h1>
+        <form th:action="@{/dang-ki}" method="POST" th:object="${User}" class="signup-form">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>Họ và tên</label>
+                    <input type="text" class="form-input" th:field="*{username}">
+                </div>
+                <div class="form-group col-md-12">
+                    <label>Email</label>
+                    <input type="text" class="form-input" th:field="*{email}">
+                </div>
+                <div class="form-group col-md-12">
+                    <label>Password</label>
+                    <input type="password" class="form-input" th:field="*{password}">
+                </div>
+            </div>
+            <button type="submit" class="form-submit">Đăng kí</button>
+        </form>
+        <p class="signup-already">Đã có tài khoản ? <a th:href=@{'/login'} class="signup-already-link">Đăng nhập</a>
+        </p>
+    </div>
+</div>
+
+</body>

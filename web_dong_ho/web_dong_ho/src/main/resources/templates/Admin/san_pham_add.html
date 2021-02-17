@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <title>Dashboard</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" th:href="@{/css/style_admin.css}" href="../../static/css/style_admin.css">
+
+    <!-- Main Quill library -->
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <!-- Theme included stylesheets -->
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="container-fluid  d-flex justify-content-between khung">
+            <div class="title">
+                <h3>Quản lý</h3>
+
+            </div>
+            <div class="dropdown user">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">Thông tin</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <!-- menu  -->
+            <div class="sidenav-dark" th:include="Layout/menu::menu">
+            </div>
+            <!-- end  menu  -->
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <h1 class="mt-4 main_title" th:text="${Title}">Thêm mới sản phẩm</h1>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar mr-1"></i>
+                                    <span th:text="${Title}"> Thêm mới sản phẩm</span>
+                                </div>
+                                <div class="card-body">
+                                    <form th:action="@{'/admin/san-pham/them'}" th:object="${SanPham}" method="POST"
+                                          enctype="multipart/form-data">
+                                        <div class="mb-4">
+                                            <a th:href=@{'/admin/san-pham'} class="btn btn-primary">
+                                                <i class="fas fa-arrow-left"></i>
+                                            </a>
+                                            <button type="submit" class="btn btn-primary" id="them_moi">
+                                                <i class="fas fa-save"></i>
+                                            </button>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-1">
+                                                <label>Mã sp</label>
+                                                <input type="text" class="form-control" readonly th:field="*{id}">
+                                            </div>
+                                            <div class="form-group col-md-5">
+                                                <label>Tên sản phẩm</label>
+                                                <input type="text" class="form-control" th:field="*{name}">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label>Giá tiền</label>
+                                                <input type="number" class="form-control" th:field="*{giaTien}">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label>Sale</label>
+                                                <input type="number" class="form-control" th:field="*{sale}">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-3">
+                                                <label>Loại sản phẩm</label>
+                                                <select class="form-control" th:field="*{loaiSanPham}">
+                                                    <div th:each="ItemLoaiSach : ${LoaiSanPham}">
+                                                        <option th:value="${ItemLoaiSach.id}"
+                                                                th:text="${ItemLoaiSach.name}">Choose...</option>
+                                                    </div>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label>Lượt truy cập</label>
+                                                <input type="number" class="form-control" th:field="*{luotTruyCap}">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label>Ngày đăng</label>
+                                                <input type="date" class="form-control" th:field="*{ngayDang}">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label>Trạng thái</label>
+                                                <select class="form-control" th:field="*{status}">
+                                                    <option value="0">Hiện</option>
+                                                    <option value="1">Ẩn</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-3" style="overflow: hidden;">
+                                                <label>Ảnh</label>
+                                                <img src="../../img/sp_1.jpg" style="height: 200px;"
+                                                     th:src="@{'/img/san_pham/'+${SanPham.img}}"
+                                                     th:unless="${Title == 'Thêm sản phẩm mới'}">
+                                                <input type="file" class="form-control-file mt-2" name="image_file">
+                                            </div>
+                                            <div class="form-group col-md-9">
+                                                <label>Title</label>
+                                                <textarea class="form-control" rows="6" th:field="*{title}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-row" style="margin-bottom: 100px;">
+                                            <div class="form-group col-12">
+                                                <label>Content</label>
+                                                <textarea name="text" style="display:none" th:field="*{content}"
+                                                          id="quill_editor"></textarea>
+                                                <div id="editor" style="min-height: 200px;"></div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- End jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        var toolbarOptions = [
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+
+            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+            ['link', 'image'],
+            ['clean']
+        ];
+
+        var quill = new Quill('#editor', {
+            modules: {
+                toolbar: toolbarOptions
+            },
+
+            theme: 'snow'
+        });
+
+        $("#them_moi").click(function (e) {
+            $("#quill_editor").val(quill.root.innerHTML);
+            var abc = $("#quill_editor").val();
+            console.log(abc);
+        });
+
+        quill.setHTML = (html) => {
+            quill.root.innerHTML = html;
+        };
+
+        var abc = $("#quill_editor").val();
+        quill.setHTML(abc);
+    </script>
+</body>
+
+</html>

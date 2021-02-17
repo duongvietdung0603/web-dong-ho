@@ -1,0 +1,165 @@
+ 
+.main .main_danh_muc {
+    border: 1px solid lightgrey;
+    height: 520px;
+}
+
+.main .main_danh_muc .title {
+     background: #D43F3F;
+        padding: 15px 20px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: white;
+}
+.main .main_danh_muc .content {
+    background-color: #ffffff;
+}
+.main .main_danh_muc .content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.main .main_danh_muc .content ul li {
+    font-weight: 600;
+}
+
+.main .main_danh_muc .content ul li a {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 3px 0;
+    font-size: 14px;
+}
+.main .main_danh_muc .content ul li a:hover {
+    background: #eaeaea;
+}
+
+.main .banner {
+    height: 520px;
+}
+/* =================================================== */
+.banner_khuyen_mai {
+    height: 120px;
+}
+.slick-prev {
+    display: none;
+}
+
+.slick-next {
+    display: none;
+}
+/* ================ main ========================== */
+.main_v1 {
+    margin: 50px 0;
+}
+.main_v1 .title {
+    padding: 10px 0;
+    border-bottom: 4px solid #D43F3F;
+}
+.main_v1 .title span {
+    background-color: #D43F3F;
+       border-radius: 10px 10px 0 0;
+       padding: 10px 30px;
+       font-weight: bold;
+       color: white;
+}
+/* ============== card ====================== */
+.card {
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    background-color: white;
+    min-height: 350px;
+}
+
+.card .card_img {
+    height: 260px;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    transition: 0.6s;
+}
+
+.card .card_img:hover img {
+    transform: scale(1.3);
+    transition: 0.6s;
+}
+
+.card .card_img img {
+    transition: 0.6s;
+}
+
+.card .card_sale {
+    background-color: red;
+    position: absolute;
+    padding: 5px 10px;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-weight: 700;
+}
+
+.card .card_title {
+    position: absolute;
+    top: 270px;
+    text-align: center;
+    width: 100%;
+}
+
+.card:hover h3 {
+    color: rgb(228, 39, 39);
+}
+
+.card .card_title h3 {
+    font-weight: bold;
+}
+
+.card .card_title h4 {
+    font-weight: bold;
+    color: rgb(228, 39, 39);
+}
+
+
+
+/* ========= main tin tức ==================== */
+.main .main_tin_tuc {
+    padding: 0 20px;
+    position: relative;
+    height: 400px;
+}
+
+.main .main_tin_tuc .tin_tuc_img {
+    position: absolute;
+    top: 0;
+    height: 250px;
+    width: 80%;
+}
+.main .main_tin_tuc .tin_tuc_title {
+    position: absolute;
+    top: 150px;
+    width: 70%;
+    right: -1px;
+    background-color: #707070;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.main .main_tin_tuc .tin_tuc_title h3 a{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    color: white;
+}
+
+.main .main_tin_tuc .tin_tuc_title span {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+}

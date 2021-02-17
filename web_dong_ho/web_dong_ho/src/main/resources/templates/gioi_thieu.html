@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+    <!-- link css -->
+    <link rel="stylesheet" href="../static/css/header.css" th:href="@{/css/header.css}">
+    <link rel="stylesheet" href="../static/css/footer.css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="../static/css/gioi_thieu.css" th:href="@{/css/gioi_thieu.css}">
+</head>
+
+
+<body>
+    <!-- header  -->
+    <div class="header" th:include="Layout/header::header"></div>
+    <!-- end header  -->
+
+    <!-- mai  -->
+    <div class="main container">
+        <div class="row">
+            <div class="col-12">
+                <div class="title_khung">
+                    <h5>Giới thiệu</h5>
+                </div>
+                <div class="content_khung">
+                    <div class="anh_chinh">
+                        <img src="https://vanhoadoanhnghiepvn.vn/wp-content/uploads/2018/06/IMG_2281.jpg" alt="">
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="gioi_thieu_chung">
+                                <h4>Giới thiệu chung</h4>
+                                <span>Được thành lập chính thức vào năm 2020, song Cửa hàng bán sách và đọc sách online
+                                    đã có kinh
+                                    nghiệm và hoạt động trong lĩnh vực thương mại điện tử.
+
+                                    Trong những năm gần đây được biết đến là một trong số rất ít thương hiệu đi đầu
+                                    trong lĩnh vực thiết kế, sản xuất lịch (calendar) và các ấn phẩm cao cấp tại TP. HCM
+                                    nói riêng và trên toàn quốc nói chung. Riêng đối với sản phẩm lịch treo tường cao
+                                    cấp và lịch Bloc và sổ tay agendar, Cty Trí Đức Thái Thịnh được đánh giá là doanh
+                                    nghiệp uy tín dẫn đầu tại Vệt Nam với việc không ngừng nỗ lực cung cấp đến khách
+                                    hàng những ấn phẩm lịch chất lượng cao, đa dạng về hình thức, sâu sắc về nội
+                                    dung.</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="anh_phu">
+                                <img src="https://vanhoadoanhnghiepvn.vn/wp-content/uploads/2018/06/IMG_2281.jpg"
+                                    alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="anh_phu">
+                                <img src="https://vanhoadoanhnghiepvn.vn/wp-content/uploads/2018/06/IMG_2281.jpg"
+                                    alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="gioi_thieu_chung">
+                                <h4>Tại sao lại chọn chúng tôi</h4>
+                                <span>Được thành lập chính thức vào năm 2020, song Cửa hàng bán sách và đọc sách online
+                                    đã có kinh
+                                    nghiệm và hoạt động trong lĩnh vực thương mại điện tử.
+
+                                    Trong những năm gần đây được biết đến là một trong số rất ít thương hiệu đi đầu
+                                    trong lĩnh vực thiết kế, sản xuất lịch (calendar) và các ấn phẩm cao cấp tại TP. HCM
+                                    nói riêng và trên toàn quốc nói chung. Riêng đối với sản phẩm lịch treo tường cao
+                                    cấp và lịch Bloc và sổ tay agendar, Cty Trí Đức Thái Thịnh được đánh giá là doanh
+                                    nghiệp uy tín dẫn đầu tại Vệt Nam với việc không ngừng nỗ lực cung cấp đến khách
+                                    hàng những ấn phẩm lịch chất lượng cao, đa dạng về hình thức, sâu sắc về nội
+                                    dung.</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer  -->
+    <div th:include="Layout/footer::footer"></div>
+    <!-- end footer  -->
+
+</body>
+
+</html>

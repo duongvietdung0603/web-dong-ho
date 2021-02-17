@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- link css -->
+    <link rel="stylesheet" th:href="@{/css/header.css}" href="../static/css/header.css">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="../static/css/footer.css">
+    <link rel="stylesheet" th:href="@{/css/don_hang.css}" href="../static/css/don_hang.css">
+</head>
+
+<body>
+<!-- header  -->
+<div class="header" th:include="Layout/header::header"></div>
+<!-- end header  -->
+
+<!-- mai  -->
+<div class="main container">
+    <div class="row">
+        <div class="col-12">
+            <div class="title_khung">
+                <h3>Đơn hàng</h3>
+            </div>
+            <div class="content_khung">
+                <button type="button" class="btn btn-primary mb-4" data-toggle="modal"
+                        data-target="#exampleModal">Sửa đổi thông tin cá nhân</button>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Mã DH</th>
+                        <th scope="col">Sản phẩm</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Chi tiết</th>
+                        <th scope="col">Người nhận</th>
+                        <th scope="col">Active</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${DonHang}">
+                        <th scope="row" th:text="${item.id}">1</th>
+                        <td>
+                            <h5 th:each="item_v1 : ${DonHangChiTiet}" th:if="${item_v1.hoaDon.id == item.id}">
+                                <a th:href="@{'/chi-tiet/'+ ${item_v1.sanPham.id}}"
+                                   th:text="${item_v1.sanPham.name} + '  x  '+ ${item_v1.soLuong} + ' = ' + ${item_v1.tongTien}"></a>
+                            </h5>
+                        </td>
+                        <td th:text="${item.tongTien}"> Otto</td>
+                        <td th:text="${item.tongTien}"> Otto</td>
+                        <td>
+                            <h5>Họ tên: <span th:text="${item.hoTen}"></span></h5>
+                            <h5>SĐT: <span th:text="${item.soDT}"></span></h5>
+                            <h5>Email: <span th:text="${item.email}"></span></h5>
+                            <h5>Địa chỉ: <span th:text="${item.diaChi}"></span></h5>
+                            <h5>Ghi chú: <span th:text="${item.ghiChu}"></span></h5>
+                        </td>
+                        <td>
+                            <a href="#" th:href="@{'/don-hang/'+ ${item.id}}" class="btn"><i
+                                    class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- nội dung  -->
+                    <form th:action=@{'/thong-tin-ca-nhan'} th:object="${user}" method="POST">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" th:field="*{username}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" th:field="*{email}" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Mật khẩu</label>
+                            <input type="text" th:field="*{password}" class="form-control">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                    <!-- end nội dung  -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end mai  -->
+
+<!-- footer  -->
+<div class="footer" th:include="Layout/footer::footer"></div>
+<!-- end footer  -->
+
+</body>
+
+</html>

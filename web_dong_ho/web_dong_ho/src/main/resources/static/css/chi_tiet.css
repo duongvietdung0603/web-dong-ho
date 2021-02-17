@@ -1,0 +1,89 @@
+.main {
+    padding-bottom: 50px;
+}
+.main .main_danh_muc {
+    border: 1px solid lightgrey;
+}
+
+.main .main_danh_muc .title {
+    background: #D43F3F;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+}
+.main .main_danh_muc .content {
+    background-color: #ffffff;
+}
+.main .main_danh_muc .content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.main .main_danh_muc .content ul li {
+    font-weight: 600;
+}
+
+.main .main_danh_muc .content ul li a {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 3px 0;
+    font-size: 14px;
+}
+.main .main_danh_muc .content ul li a:hover {
+    background: #eaeaea;
+}
+
+.main .main_danh_muc .content ul li a span img {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+}
+
+.khung_anh_v1 {
+    height: 350px;
+}
+.khung_anh_v2 {
+    padding: 10px;
+}
+
+.slick-prev {
+    display: none;
+}
+
+.slick-next {
+    display: none;
+}
+
+.ten {
+    font-weight: bold;
+}
+.gia {
+    font-weight: bold;
+    color: red;
+}
+
+.chi_tiet_sp .title {
+    padding: 10px 0;
+    border-bottom: 4px solid #D43F3F;;
+}
+.chi_tiet_sp .title span {
+    background: #D43F3F;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 30px;
+    font-weight: bold;
+    color: white;
+
+}
+.chi_tiet_sp .content {
+    background-color: white;
+    color: black;
+    padding: 10px;
+}
+
+.button_v1 {
+    background: #f44336;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+}

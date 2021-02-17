@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <title>Dashboard</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" th:href="@{/css/style_admin.css}" href="../../static/css/style_admin.css">
+
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="container-fluid  d-flex justify-content-between khung">
+            <div class="title">
+                <h3>Quản lý</h3>
+
+            </div>
+            <div class="dropdown user">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" th:href=@{'/logout'}>Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+<div class="menu">
+abc
+</div> -->
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <!-- thanh menu  -->
+            <nav class="sidenav-dark" th:include="Layout/menu::menu"></nav>
+            <!-- end thanh menu  -->
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <h1 class="mt-4 main_title">Sản phẩm</h1>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar mr-1"></i>
+                                    Danh sách
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mt-2 mb-2">
+                                        <div class="col-6">
+                                            <a th:href=@{'/admin/san-pham/them'}  class="btn btn-primary">
+                                                <i class="fas fa-plus"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-6">
+                                            <form th:action="@{/admin/san-pham}"
+                                                class="form-inline justify-content-end">
+                                                <div class="form-group mx-sm-3 mb-2">
+                                                    <input th:value="${search}" type="text" class="form-control"
+                                                        placeholder="Search" name="search">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary mb-2">Search</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Mã sp</th>
+                                            <th scope="col">Tên sản phẩm</th>
+                                            <th scope="col">Ảnh</th>
+                                            <th scope="col">Giá tiền</th>
+                                            <th scope="col">Sale</th>
+                                            <th scope="col">Loại sp</th>
+                                            <th scope="col">Lượt truy cập</th>
+                                            <th scope="col">Ngày đăng</th>
+                                            <th scope="col">Active</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="Item : ${SanPham}">
+                                            <th th:text="${Item.id}">1</th>
+                                            <td th:text="${Item.name}">Sản phẩm 1</td>
+                                            <td style="width: 100px;height: 100px;">
+                                                <img src="../../img/sp_1.jpg" th:src="@{'/img/san_pham/'+${Item.img}}">
+                                            </td>
+                                            <td th:text="${Item.giaTien}">2000 VNĐ</td>
+                                            <td th:text="${Item.sale}">20%</td>
+                                            <td th:text="${Item.loaiSanPham.name}" style="width: 150px;">Đồng hồ cơ rolex abc</td>
+                                            <td th:text="${Item.luotTruyCap}">100</td>
+                                            <td th:text="${Item.ngayDang}">01-01-2021</td>
+                                            <td>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a th:href="@{'/admin/san-pham/sua/'+ ${Item.id}}"
+                                                       class="btn btn-success click_sua">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <a th:href="@{'/admin/san-pham/xoa/'+ ${Item.id}}"
+                                                       class="btn btn-danger">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="row" th:if="${tongSoPage != 0}">
+                                        <div class="col-12">
+                                            <ul class="pagination justify-content-center">
+                                                <li th:class="${pageHienTai == 0} ? 'page-item disabled' : 'page-item'">
+                                                    <a class="page-link" th:href="@{'/admin/san-pham?search='+ ${search} +'&page=' + ${pageHienTai - 1}}" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                </li>
+
+                                                <span th:each="item : ${#numbers.sequence(0,tongSoPage-1)}">
+                                                <li  th:class="${pageHienTai == item} ? 'page-item active' : 'page-item'"
+                                                     class="page-item">
+                                                    <a class="page-link" th:href="@{'/admin/san-pham?search='+ ${search} +'&page=' + ${item}}" th:text="${item + 1}">1</a>
+                                                </li>
+                                                </span>
+
+                                                <li th:class="${pageHienTai == tongSoPage-1} ? 'page-item disabled' : 'page-item'">
+                                                    <a class="page-link" th:href="@{'/admin/san-pham?search='+ ${search} +'&page=' + ${pageHienTai + 1}}" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- End jQuery first, then Popper.js, then Bootstrap JS -->
+</body>
+
+</html>

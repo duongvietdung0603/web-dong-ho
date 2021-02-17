@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- slick  -->
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+    <!-- link css -->
+    <!-- link css -->
+    <link rel="stylesheet" th:href="@{/css/header.css}" href="../static/css/header.css">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="../static/css/footer.css">
+    <link rel="stylesheet" th:href="@{/css/chinh_sach.css}" href="../static/css/chinh_sach.css">
+
+</head>
+
+<body>
+<!-- header -->
+<div class="header" th:include="Layout/header::header"></div>
+<!-- end header -->
+
+
+<!-- main  -->
+<div class="main container">
+    <div class="row">
+        <div class="col-12">
+            <div class="title_khung">
+                <h3>CHÍNH SÁCH</h3>
+            </div>
+            <div class="content_khung">
+                <h4 class="title_chinh_sach">1. Chính sách bảo hành</h4>
+                <span>
+                        Gói bảo hành 5 năm. Để tránh lập lờ đánh lận con đen về ranh giới giữa bảo hành miễn phí và bảo
+                        hành trả phí, Quý khách vui lòng chiếu theo bảng sau đây:
+                    </span>
+                <div class="mt-2 mb-2" style="width: 70%; margin: auto;">
+                    <img src="img/chinh_sach.jpg" alt="">
+                </div>
+
+                <h4 class="title_chinh_sach">2. Chính sách giao hàng</h4>
+                <span>
+                        Ngay sau khi đơn hàng được gửi đến, chúng tôi sẽ gửi thư (hoặc gọi điện) xác nhận rằng hàng hóa
+                        của Quý khách đang được chuyển đi. Hàng sẽ đến tận tay Quý khách trong vòng từ 1 đến 5 ngày (trừ
+                        ngày lễ và chủ nhật).
+                    </span>
+                <ul>
+                    <li>Phí vận chuyển: Khách hàng được MIỄN PHÍ vận chuyển trên Toàn quốc.</li>
+                    <li>Thời gian xử lý đơn hàng:
+                        <ul>
+                            <li>Đơn đặt hàng từ 8h30 đến 17h30 thì chúng tôi sẽ liên hệ trong ngày.</li>
+                            <li>Đơn đặt hàng sau 17h30 thì chúng tôi sẽ liên hệ vào sáng hôm sau.</li>
+                        </ul>
+                    </li>
+                    <li>Thời gian giao hàng:
+                        <ul>
+                            <li>Giao hàng trong ngày hoặc từ 1 - 2 ngày cho khách hàng có địa chỉ ở các quận nội
+                                thành Thành phố Hà Nội và các tỉnh lân cận.</li>
+                            <li> Giao hàng từ 2 – 5 ngày cho khách hàng có địa chỉ ở các tỉnh xa, miền Trung và miền
+                                Nam.</li>
+                            <li>Tuy nhiên, vào thời gian cao điểm (lễ, tết…) chúng tôi không thể giao hàng ngay nên
+                                sẽ thỏa thuận thời gian giao hàng cho Quý khách. Kính mong Quý khách thông cảm!</li>
+                        </ul>
+                    </li>
+                </ul>
+                <span>
+                        Trước khi giao hàng chúng tôi sẽ gọi điện xác nhận rằng hàng hóa của Quý khách đang được chuyển
+                        đi. Hàng sẽ đến tận tay Quý khách trong vòng từ 1 đến 5 ngày (trừ ngày lễ và chủ nhật).
+
+                        Chúng tôi đảm bảo giao hàng trong vòng 24 - 48h (kể cả thứ 7 và Chủ Nhật) trong nội thành Hà
+                        Nội. Việc giao hàng sẽ được tiến hành ngay khi chúng tôi xác nhận được giao dịch. Nếu trong đợt
+                        giao hàng đầu tiên Quý khách không có mặt, chúng tôi sẽ gửi email (hoặc gọi điện) đến Quý khách
+                        để sắp xếp thời gian giao hàng khác thuận tiện hơn. Nếu đợt giao hàng thứ hai bị hoãn với cùng
+                        lý do, Quý khách sẽ đến kho hàng của chúng tôi để nhận hàng trong thời gian hoạt động từ 8h30
+                        đến 21h30.
+
+                        Tuy hiếm xảy ra nhưng nếu quý khách phát hiện sản phẩm bị khiếm khuyết hay thiếu sản phẩm trong
+                        đơn hàng, Quý khách có thể tham khảo quy định đổi trả hàng hoặc liên hệ với chúng tôi qua số
+                        điện thoại (04) 3622 8508 hoặc hotline 0986681189, chúng tôi cam kết sẽ giải quyết sớm nhất cho
+                        Quý khách./
+                    </span>
+
+                <h4 class="title_chinh_sach">3. Chính sách đổi trả</h4>
+                <span>
+                        Chính sách đổi trả hàng nhằm đảm bảo quyền lợi tối đa cho khách hàng khi mua sắm hàng hóa tại
+                        Dangquangwatch.vn, cụ thể như sau:
+                    </span>
+                <br><br>
+                <span>Nhằm đảm bảo quyền lợi người tiêu dùng, nâng cao chất lượng dịch vụ sau bán hàng, Khách hàng
+                        được đổi sản phẩm mới cùng loại khi sản phẩm gặp sự cố không thể khắc phục được (do lỗi kỹ thuật
+                        của nhà sản xuất). Sản phẩm lỗi chỉ được đổi sau khi đã có xác nhận của kỹ thuật và tuân thủ
+                        theo các điều kiện sau đây:</span>
+                <ul>
+                    <li>Sản phẩm mới mua trong vòng 01 ngày kể từ ngày xuất bán. Khách hàng mua trực tuyến, thời
+                        gian được tính từ ngày khách nhận được sản phẩm;</li>
+                    <li>Hàng hóa được xác định nguồn gốc mua tại Công ty Cổ phần Trực tuyến Đăng Quang (căn cứ vào
+                        hóa đơn mua hàng, phiếu bảo hành và tem nhận diện dán trên sản phẩm);</li>
+                    <li>Hàng hóa được xác nhận bị lỗi kỹ thuật của Kỹ thuật viên của Trung Tâm Bảo Hành của Hãng;
+                    </li>
+                    <li>Hàng hóa vẫn còn nguyên tem niêm phong (không bị rách vỡ hoặc dán lại) của nhà sản xuất hoặc
+                        tem của Đăng QuangWatch, phải còn nguyên vẹn vỏ thùng, xốp và đầy đủ các phụ kiện kèm theo,
+                        quà khuyến mại (nếu có)…</li>
+                    <li>Hàng hóa nhận lại không bị lỗi hình thức (trầy xước, móp méo, ố vàng, vỡ …)li>
+                    <li>Hàng hóa nhận lại phải còn đầy đủ linh kiện.</li>
+                    <li>Hàng hóa khi nhận lại phải có đầy đủ các chứng từ kèm theo (Phiếu bảo hành, sách hướng dẫn
+                        …)</li>
+                </ul>
+                <br>
+                <span>
+                        Đồng hồ Đăng Quang sẽ thực hiện đổi hàng cho khách, nhưng không hoàn lại phí vận chuyển/
+                        giao hàng (nếu có), trừ những trường hợp sau:
+                    </span>
+                <ul>
+                    <li>Không đúng chủng loại, mẫu mã như quý khách đã đặt hàng.</li>
+                    <li>Không đủ số lượng, không đủ bộ/ thông tin như trong đơn hàng ban đầu.</li>
+                    <li>Không đạt chất lượng như: quá hạn sử dụng, hết bảo hành, không vận hành được, hỏng hóc khách
+                        quan trong phạm vi bảo hành của nhà cung cấp, nhà sản xuất,..</li>
+                </ul>
+                <br>
+                <span>Trường hợp không chấp nhận đổi hoặc trả sản phẩm:</span>
+                <ul>
+                    <li>Quý khách muốn thay đổi mẫu mã, chủng loại sản phẩm;</li>
+                    <li>Lỗi do người sử dụng;</li>
+                    <li>Không chấp nhận các lỗi ngoại quan (xước, móp, méo, vỡ, sứt…) khi khách hàng đã mang sản
+                        phẩm ra khỏi cửa hàng Công ty;</li>
+                    <li>Quý khách vận hành không đúng chỉ dẫn, gây hỏng hóc sản phẩm, hàng hóa;</li>
+                    <li>Quý khách tự làm ảnh hưởng tình trạng bên ngoài như bong tróc, bể vỡ, …;</li>
+                    <li>Quý khách yêu cầu đổi trả hàng hóa vì lý do sai phạm về hình thức (trầy xước, móp méo, ố
+                        vàng, bể vỡ,…) mà khi quý khách mua hàng hóa vẫn còn nguyên vẹn.</li>
+                </ul>
+                <span>Chú ý: Khách hàng xem kỹ sản phẩm trước khi mua, sản phẩm đã bán ra không nhập lại. Để đảm bảo
+                        cho mọi khách hàng luôn mua được sản phẩm mới.</span>
+                <br>
+                <span>Qui trình xử lý thủ tục đổi trả hàng:</span><br>
+                <span>
+                        Khách hàng có thể liên hệ trực tiếp với Trung Tâm Bảo Hành của Hãng hoặc thông qua Phòng Bảo
+                        hành của Công ty để thay mặt chuyển hàng hóa đến Hãng để kiểm tra. Sau khi có Giấy Xác Nhận Tình
+                        Trạng với nội dung hàng hóa hư hỏng do lỗi kỹ thuật không thể sửa chữa, chấp nhận đổi mới. Việc
+                        đổi hàng sẽ được thực hiện theo đúng quy định của Công ty.
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer  -->
+<div th:include="Layout/footer::footer"></div>
+<!-- end footer  -->
+</body>
+
+</html>

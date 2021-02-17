@@ -1,0 +1,36 @@
+.main {
+    padding-bottom: 50px;
+}
+
+.button_v1 {
+    background: #f44336;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+
+.main .title_khung h3 {
+    margin: 0 0 0 0;
+    padding: 0;
+    color: #1d1d1d;
+    font-weight: bold;
+    line-height: 40px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #fbbf22;
+}
+.main .content_khung {
+    background-color: white;
+    padding-top: 10px;
+    padding: 5px;
+    min-height: 200px;
+}
+
+.table th {
+    color: #fff !important;
+    background-color: #5a9adb;
+    border-color: #6a6b6c;
+    text-align: center;
+}
+.table td {
+    text-align: center;
+}

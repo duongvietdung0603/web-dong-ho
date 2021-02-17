@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- link css -->
+    <link rel="stylesheet" th:href="@{/css/header.css}" href="../static/css/header.css">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="../static/css/footer.css">
+    <link rel="stylesheet" th:href="@{/css/blog.css}" href="../static/css/blog.css">
+</head>
+
+<body>
+    <!-- header  -->
+    <div class="header" th:include="Layout/header::header"></div>
+    <!-- end header  -->
+
+    <!-- main  -->
+    <div class="container mt-4">
+        <div class="row  mb-4">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a th:href=@{'/'}><i class="fas fa-home mr-1"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="blog_title">
+                    Tin tức nổi bật
+                </h3>
+            </div>
+            <div class="col-8">
+                <div class="card_v1" DanhSachTop1>
+                    <img  th:src="@{'/img/tin_tuc/'+${DanhSachTop1.img}}"
+                          src="https://upload.wikimedia.org/wikipedia/commons/0/04/Fish_pond_od_skalica1_2.JPG" alt="">
+                    <h3 class="title">
+                        <a th:href=@{'blog/'+${DanhSachTop1.id}} th:text="${DanhSachTop1.title}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque eius</a>
+                    </h3>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12 mb-4"  th:each="Item : ${DanhSachTop2}">
+                        <div class="card_v1 khung_1">
+                            <img  th:src="@{'/img/tin_tuc/'+${Item.img}}"
+                                  src="https://upload.wikimedia.org/wikipedia/commons/0/04/Fish_pond_od_skalica1_2.JPG" alt="">
+                            <h3 class="title">
+                                <a th:href=@{'blog/'+${Item.id}} th:text="${Item.title}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque eius</a>
+                            </h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="blog_title">
+                            Tất cả các tin tức
+                        </h3>
+                    </div>
+                    <div class="col-6 mb-4" th:each="Item : ${DanhSach}">
+                        <div class="card">
+                            <img th:src="@{'/img/tin_tuc/'+${Item.img}}"
+                                 src="https://upload.wikimedia.org/wikipedia/commons/0/04/Fish_pond_od_skalica1_2.JPG"
+                                 alt="">
+                            <h4 class="title">
+                                <a th:href=@{'blog/'+${Item.id}} th:text="${Item.title}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque eius</a>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="blog_title">
+                            Tin tức mới
+                        </h3>
+                        <div class="blog_content">
+                            <div class="container">
+
+                                <div class="row mb-4" th:each="Item : ${DanhSachNew}">
+                                    <div class="col-4">
+                                        <img th:src="@{'/img/tin_tuc/'+${Item.img}}"
+                                             src="https://upload.wikimedia.org/wikipedia/commons/0/04/Fish_pond_od_skalica1_2.JPG"
+                                             alt="">
+                                    </div>
+                                    <div class="col-8">
+                                        <h4 class="title">
+                                            <a  th:href=@{'blog/'+${Item.id}} th:text="${Item.title}">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                Doloremque eius</a>
+                                        </h4>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main  -->
+
+    <!-- footer  -->
+    <div th:include="Layout/footer::footer"></div>
+    <!-- end footer  -->
+</body>
+
+</html>

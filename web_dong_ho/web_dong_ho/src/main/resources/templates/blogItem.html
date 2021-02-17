@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- Main Quill library -->
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <!-- Theme included stylesheets -->
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+
+    <!-- link css -->
+    <link rel="stylesheet" th:href="@{/css/header.css}" href="../static/css/header.css">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="../static/css/footer.css">
+ </head>
+<style>
+/* blog new  */
+.blog_title {
+    background-color: #a5a5a5;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.blog_content {
+    border: 1px solid #d9d9d9;
+    padding: 10px 0;
+}
+
+.blog_content img {
+    height: 80px;
+}
+
+.blog_content .title a {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+           font-size: 20px;
+        font-weight: 600;
+}
+
+.noi_dung .title {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+
+    .ql-toolbar.ql-snow {
+        display: none;
+    }
+
+    .ql-container.ql-snow {
+        border: none;
+    }
+
+    main {
+        padding-top: 100px;
+    }
+
+    main .title {
+        font-weight: 700;
+    }
+</style>
+
+<body>
+    <!-- header  -->
+    <div class="header" th:include="Layout/header::header"></div>
+    <!-- end header  -->
+
+    <!-- main  -->
+    <div class="container mt-4">
+        <div class="row  mb-4">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a th:href=@{'/'}><i class="fas fa-home mr-1"></i> Home</a></li>
+                        <li class="breadcrumb-item"><a th:href=@{'/blog'}> Blog</a></li>
+                        <li class="breadcrumb-item active" aria-current="page" th:text="${ChiTietId.title}">Blog</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-12 noi_dung">
+                        <h2 class="title" th:text="${ChiTietId.title}">
+                            Tất cả các tin tức
+                        </h2>
+                        <span class="ngay" th:text="${ChiTietId.ngayDang}">02-02-2020</span>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <div class="content">
+                            <textarea name="text" style="display:none" id="gioi_thieu" th:text="${ChiTietId.content}"></textarea>
+                            <div id="editor">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="blog_title">
+                            Tin tức mới
+                        </h3>
+                        <div class="blog_content">
+                            <div class="container">
+                                <div class="row mb-4" th:each="Item : ${DanhSachNew}">
+                                    <div class="col-4">
+                                        <img th:src="@{'/img/tin_tuc/'+${Item.img}}"
+                                             src="https://upload.wikimedia.org/wikipedia/commons/0/04/Fish_pond_od_skalica1_2.JPG"
+                                             alt="">
+                                    </div>
+                                    <div class="col-8">
+                                        <h4 class="title">
+                                            <a  th:href=@{${Item.id}} th:text="${Item.title}">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                Doloremque eius</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main  -->
+
+    <!-- footer  -->
+    <div class="footer" th:include="Layout/footer::footer"></div>
+    <!-- end footer  -->
+    <script type="text/javascript">
+        var toolbarOptions = [
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+
+            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+            ['link', 'image'],
+            ['clean']
+        ];
+
+        var quill = new Quill('#editor', {
+            modules: {
+                toolbar: toolbarOptions
+            },
+
+            theme: 'snow'
+        });
+
+        quill.setHTML = (html) => {
+            quill.root.innerHTML = html;
+        };
+
+        var abc = $("#content_quill").val();
+        quill.setHTML(abc);
+        quill.enable(false);
+
+    </script>
+</body>
+
+</html>

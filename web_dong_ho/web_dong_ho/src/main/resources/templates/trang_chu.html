@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- slick  -->
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+    <!-- link css -->
+    <link rel="stylesheet" th:href="@{/css/header.css}" href="../static/css/header.css">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="../static/css/footer.css">
+    <link rel="stylesheet" th:href="@{/css/trang_chu.css}" href="../static/css/trang_chu.css">
+ </head>
+
+<body>
+    <!-- header -->
+    <div class="header" th:include="Layout/header::header"></div>
+    <!-- end header -->
+
+    <!-- main  -->
+    <div class="main container">
+        <!-- main top  -->
+        <div class="row">
+            <div class="col-4">
+                <div class="main_danh_muc">
+                    <h5 class="title">a</i> Danh mục</h5>
+                    <div class="content">
+                        <ul>
+                            <li th:each="item : ${LoaiSanPham}">
+                                <a th:href="@{'/danh-sach?loai-san-pham='+ ${item.id}}"
+                                   class="d-flex justify-content-between">
+                                    <span th:text="${item.name}">Đồng hồ Patek Philippe</span>
+                                    <span><i class="fas fa-angle-right"></i></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{'/danh-sach'}" class="text-center">
+                                    <span> Xem thêm ...</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="banner">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner" style="height: 520px;">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="img/san_pham/sp_8.jpg"
+                                    style="height: 520px;">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/san_pham/sp_2.jpg"
+                                    style="height: 520px;">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/san_pham/sp_7.jpg"
+                                    style="height: 520px;">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/san_pham/sp_1.jpg"
+                                     style="height: 520px;">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-4">
+                <div class="multiple-items">
+                    <div class="banner_khuyen_mai">
+                        <img src="img/khuyen_mai_1.jpg" alt="">
+                    </div>
+                    <div class="banner_khuyen_mai">
+                        <img src="img/khuyen_mai_2.jpg" alt="">
+                    </div>
+                    <div class="banner_khuyen_mai">
+                        <img src="img/khuyen_mai_1.jpg" alt="">
+                    </div>
+                    <div class="banner_khuyen_mai">
+                        <img src="img/khuyen_mai_2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end main top  -->
+
+        <!-- main sp new  -->
+        <div class="main_v1">
+            <h4 class="title">
+                <span>Sản phẩm mới</span>
+            </h4>
+            <div class="row mt-4">
+                <div class="col-3  mb-4" th:each="item : ${SanPhamMoi}">
+                    <a th:href="@{'/chi-tiet/'+ ${item.id}}"  class="card">
+                        <div class="card_img">
+                            <img src="../img/sp_1.jpg" th:src="@{'/img/san_pham/'+${item.img}}">
+                        </div>
+                        <div class="card_sale" th:text="'-' + ${item.sale} + '%'" th:if="${item.sale != 0}">
+                            -20%
+                        </div>
+                        <div class="card_title">
+                            <h3 th:text="${item.name}">Tên sản phẩm</h3>
+                            <h4 th:if="${item.sale != 0}">
+                                <span class="mr-3"><del th:text="${item.giaTien} + ' VNĐ'">3000 VNĐ</del></span> <span th:text="${item.giaTien - item.giaTien * item.sale / 100 } + ' VNĐ'">2000 vnđ</span>
+                            </h4>
+                            <h4 th:if="${item.sale == 0}"  th:text="${item.giaTien} + ' VNĐ'"></h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end main sp new  -->
+
+        <!-- main sp bán chạy  -->
+        <div class="main_v1">
+            <h4 class="title">
+                <span>Sản phẩm nổi bật</span>
+            </h4>
+            <div class="row mt-4">
+                <div class="col-3  mb-4" th:each="item : ${SanPhamNoiBat}">
+                    <a th:href="@{'/chi-tiet/'+ ${item.id}}"  class="card">
+                        <div class="card_img">
+                            <img src="../img/sp_1.jpg" th:src="@{'/img/san_pham/'+${item.img}}">
+                        </div>
+                        <div class="card_sale" th:text="'-' + ${item.sale} + '%'" th:if="${item.sale != 0}">
+                            -20%
+                        </div>
+                        <div class="card_title">
+                            <h3 th:text="${item.name}">Tên sản phẩm</h3>
+                            <h4 th:if="${item.sale != 0}">
+                                <span class="mr-3"><del th:text="${item.giaTien} + ' VNĐ'">3000 VNĐ</del></span> <span th:text="${item.giaTien - item.giaTien * item.sale / 100 } + ' VNĐ'">2000 vnđ</span>
+                            </h4>
+                            <h4 th:if="${item.sale == 0}"  th:text="${item.giaTien} + ' VNĐ'"></h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end main sp bán chạy  -->
+
+        <!-- main tin tức  -->
+        <div class="main_v1">
+            <h4 class="title">
+                <span>Tin tức</span>
+            </h4>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="multiple-items_v2">
+                        <div class="main_tin_tuc" th:each="Item : ${TinTuc}">
+                            <div class="tin_tuc_img">
+                                <img th:src="@{'/img/tin_tuc/'+${Item.img}}" src="../img/khuyen_mai_1.jpg" alt="">
+                            </div>
+                            <div class="tin_tuc_title">
+                                <h3>
+                                    <a style="color: white;" th:href=@{'blog/'+${Item.id}} th:text="${Item.title}">Tin tức tên</a>
+                                </h3>
+                                <span th:text="${Item.contentShort}">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit odio
+                                    officia tenetur voluptatibus autem dicta ab natus eligendi ad quidem, tempore odit
+                                    aspernatur ipsa obcaecati deleniti ut inventore nulla.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end main tin tức  -->
+    </div>
+    <!-- end main  -->
+
+    <!-- footer  -->
+    <div th:include="Layout/footer::footer"></div>
+    <!-- end footer  -->
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.multiple-items').slick({
+                // infinite: true,
+                // slidesToShow: 3,
+                // slidesToScroll: 3,
+                autoplay: true,
+                autoplaySpeed: 1000,
+            });
+
+            $('.multiple-items_v2').slick({
+                infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                autoplay: true,
+                autoplaySpeed: 1000,
+            });
+        });
+    </script>
+</body>
+
+</html>

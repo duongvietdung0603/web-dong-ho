@@ -1,0 +1,77 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<nav class="sidenav-dark" xmlns:th="http://www.thymeleaf.org" th:fragment="menu">
+    <div class="nav">
+        <div class="sidenav-title">Dashboard</div>
+        <a class="nav-link d-flex justify-content-between align-items-center"  th:href=@{'/admin/'}>
+            <div class="link_icon"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+            </div>
+        </a>
+
+    </div>
+
+    <div class="nav">
+        <div class="sidenav-title">Quản lý chung</div>
+
+        <!-- sách  -->
+        <a class="nav-link d-flex justify-content-between align-items-center" data-toggle="collapse"
+           href="#collapse_1">
+            <div class="link_icon"><i class="fas fa-book mr-2"></i>Sản phẩm
+            </div>
+            <i class="fas fa-angle-right"></i>
+        </a>
+        <div class="collapse" id="collapse_1">
+            <div class="card-body">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link link" th:href=@{'/admin/san-pham'}>Danh sách</a>
+                    <a class="nav-link link" th:href=@{'/admin/loai-san-pham'}>Loại sản phẩm</a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- nhân viên  -->
+        <a class="nav-link d-flex justify-content-between align-items-center" data-toggle="collapse"
+           href="#collapse_2">
+            <div class="link_icon"><i class="fas fa-users mr-2"></i>Blog
+            </div>
+            <i class="fas fa-angle-right"></i>
+        </a>
+        <div class="collapse" id="collapse_2">
+            <div class="card-body">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link link" th:href=@{'/admin/blog'}>Danh Sách</a>
+                 </nav>
+            </div>
+        </div>
+
+        <!-- khách hàng  -->
+        <a class="nav-link d-flex justify-content-between align-items-center" data-toggle="collapse"
+           href="#collapse_3">
+            <div class="link_icon"><i class="fas fa-user mr-2"></i>User
+            </div>
+            <i class="fas fa-angle-right"></i>
+        </a>
+        <div class="collapse" id="collapse_3">
+            <div class="card-body">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link link" th:href=@{'/admin/user'}>Danh Sách</a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- khách hàng  -->
+        <a class="nav-link d-flex justify-content-between align-items-center" data-toggle="collapse"
+           href="#collapse_4">
+            <div class="link_icon"><i class="fas fa-user mr-2"></i>Đơn hàng
+            </div>
+            <i class="fas fa-angle-right"></i>
+        </a>
+        <div class="collapse" id="collapse_4">
+            <div class="card-body">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link link" th:href=@{'/admin/don-hang'}>Danh Sách</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</nav>

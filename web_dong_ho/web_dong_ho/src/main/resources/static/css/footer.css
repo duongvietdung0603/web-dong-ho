@@ -1,0 +1,92 @@
+/*-- footer --*/
+.footer-agileits {
+    background: #141414;
+}
+.footer-left-agile,
+.footer-middle-agileits {
+    padding: 30px 0;
+}
+.footer-left-agile h1,
+.footer-middle-agileits h3 {
+    text-align: left;
+    margin-bottom: 30px;
+}
+.footer-left-agile h1 {
+    font-family: "Berkshire Swash", cursive;
+}
+.footer-left-agile h1 a {
+    color: #f44336;
+}
+.footer-left-agile p {
+    color: #a6a6a6;
+    text-align: left;
+}
+.footer-middle-agileits h3,
+.footer-right-w3layouts h3 {
+    color: #eee;
+    font-size: 30px;
+    text-align: left;
+}
+.footer-middle-agileits ul li {
+    display: inline;
+    color: #a6a6a6;
+    font-size: 14px;
+}
+.footer-middle-agileits .glyphicon {
+    color: #eee;
+    margin-right: 10px;
+}
+.footer-middle-agileits ul li a {
+    color: #a6a6a6;
+}
+ul.gap {
+    margin: 15px 0;
+}
+.footer-right {
+    background: #f44336;
+    padding: 30px;
+}
+.footer-right input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    font-size: 14px;
+    color: #fff;
+    outline: none;
+    background: none;
+    font-weight: 400;
+    border-bottom: 1px solid #fff;
+    margin: 5px 0;
+}
+.footer-right input[type="submit"] {
+    background: #141414;
+    border: 2px solid transparent;
+    color: #eee;
+    padding: 8px 15px;
+    margin-top: 10px;
+    outline: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+.footer-right input[type="submit"]:hover {
+    border: 2px solid #000;
+    background: transparent;
+}
+.copy-agileits {
+    background: #000;
+    padding: 20px 0;
+}
+.copy-agileits p {
+    color: #eee;
+    font-size: 14px;
+}
+.copy-agileits p a {
+    color: #eee;
+}
+.copy-agileits p a:hover {
+    text-decoration: underline;
+}
+/*--//footer--*/

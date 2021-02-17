@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- link css -->
+    <link rel="stylesheet" th:href="@{/css/header.css}" href="../static/css/header.css">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="../static/css/footer.css">
+    <link rel="stylesheet" th:href="@{/css/danh_sach.css}" href="../static/css/danh_sach.css">
+</head>
+
+<body>
+    <!-- header -->
+    <div class="header" th:include="Layout/header::header"></div>
+    <!-- end header -->
+
+    <!-- main  -->
+    <div class="main container">
+        <!-- main top  -->
+        <div class="row">
+            <div class="col-3">
+                <div class="main_danh_muc">
+                    <h5 class="title"><i class="fas fa-bars mr-2"></i> Danh mục</h5>
+                    <div class="content">
+                        <ul>
+                            <li>
+                                <a th:href="@{'/danh-sach'}"
+                                   th:class="${Loai == 0} ? 'link_active d-flex justify-content-between' : 'd-flex justify-content-between'">
+                                    <span>Tất cả loại sản phẩm</span>
+                                    <span><i class="fas fa-angle-right"></i></span>
+                                </a>
+                            </li>
+                            <li th:each="item : ${LoaiSanPham}">
+                                <a th:href="@{'/danh-sach?loai-san-pham='+ ${item.id}}"
+                                   th:class="${Loai == item.id} ? 'link_active d-flex justify-content-between' : 'd-flex justify-content-between'">
+                                    <span th:text="${item.name}">Đồng hồ Patek Philippe</span>
+                                    <span><i class="fas fa-angle-right"></i></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-3  mb-4" th:each="item : ${SanPham}">
+                        <a th:href="@{'/chi-tiet/'+ ${item.id}}"  class="card">
+                            <div class="card_img">
+                                <img src="../img/sp_1.jpg" th:src="@{'/img/san_pham/'+${item.img}}">
+                            </div>
+                            <div class="card_sale" th:text="'-' + ${item.sale} + '%'" th:if="${item.sale != 0}">
+                                -20%
+                            </div>
+                            <div class="card_title">
+                                <h3 th:text="${item.name}">Tên sản phẩm</h3>
+                                <h4 th:if="${item.sale != 0}">
+                                    <span class="mr-3"><del th:text="${item.giaTien} + ' VNĐ'">3000 VNĐ</del></span> <span th:text="${item.giaTien - item.giaTien * item.sale / 100 } + ' VNĐ'">2000 vnđ</span>
+                                </h4>
+                                <h4 th:if="${item.sale == 0}"  th:text="${item.giaTien} + ' VNĐ'"></h4>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="row" th:if="${tongSoPage != 0}">
+                    <div class="col-12">
+                        <ul class="pagination justify-content-center">
+                            <li th:class="${pageHienTai == 0} ? 'page-item disabled' : 'page-item'">
+                                <a class="page-link" th:href="@{'/danh-sach?loai-san-pham='+ ${Loai} +'&page=' + ${pageHienTai - 1}}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+
+                            <span th:each="item : ${#numbers.sequence(0,tongSoPage-1)}">
+                                <li  th:class="${pageHienTai == item} ? 'page-item active' : 'page-item'"
+                                     class="page-item">
+                                    <a class="page-link" th:href="@{'/danh-sach?loai-san-pham='+ ${Loai} +'&page=' + ${item}}" th:text="${item + 1}">1</a>
+                                </li>
+                            </span>
+
+                            <li th:class="${pageHienTai == tongSoPage-1} ? 'page-item disabled' : 'page-item'">
+                                <a class="page-link" th:href="@{'/danh-sach?loai-san-pham='+ ${Loai} +'&page=' + ${pageHienTai + 1}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end main top  -->
+
+    </div>
+    <!-- end main  -->
+
+    <!-- footer  -->
+    <div class="footer-agileits" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 col-md-0 footer-left-agile">
+                    <h1><a href="#">Adore</a></h1>
+                    <p>Integer porttitor elit sit amet ullamcorper venenatis. Suspendisse in ornare magna, vitae
+                        scelerisque
+                        lectus. Proin lacus tellus, tincidunt sed sem quis</p>
+                </div>
+                <div class="col-4  footer-middle-agileits">
+                    <h3>Address</h3>
+                    <ul>
+                        <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></li>
+                        <li>345 Setwant natrer,Washington. United States</li>
+                    </ul>
+                    <ul class="gap">
+                        <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
+                        <li>+18044268943</li>
+                    </ul>
+                    <ul>
+                        <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></li>
+                        <li><a href="mailto:info@example.com">example@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-4 footer-right">
+                    <h3>Contact</h3>
+                    <form action="#" method="post">
+                        <input type="text" name="Name" value="Name" onfocus="this.value = '';"
+                            onblur="if (this.value == '') {this.value = 'Name';}" required="">
+                        <input type="text" name="Email" value="Email" onfocus="this.value = '';"
+                            onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="copy-agileits">
+        <div class="container text-center">
+            <p>© 2016 Adore. All Rights Reserved | Design by <a href="">DVD</a></p>
+        </div>
+    </div>
+    <!-- end footer  -->
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+.main {
+    padding-bottom: 50px;
+}
+
+.button_v1 {
+    background: #f44336;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+
+.main .title_khung h3 {
+    margin: 0 0 0 0;
+    padding: 0;
+    color: #1d1d1d;
+    font-weight: bold;
+    line-height: 40px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #fbbf22;
+}
+.main .content_khung {
+    background-color: rgb(255, 255, 255);
+    padding: 20px 10px;
+}
+
+.title_chinh_sach {
+    font-weight: bold;
+    padding: 20px 0 10px 0;
+}

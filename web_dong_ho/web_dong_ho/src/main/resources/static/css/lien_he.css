@@ -1,0 +1,53 @@
+.main {
+    padding-bottom: 50px;
+}
+
+.main .title_khung h5 {
+    margin: 0 0 0 0;
+    padding: 0;
+    font-size: 14px;
+    color: #1d1d1d;
+    font-weight: bold;
+    line-height: 40px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #008848;
+}
+.main .content_khung {
+    background-color: white;
+    padding: 5px 5px 20px 5px;
+    min-height: 500px;
+    width: 100%;
+}
+.gioi_thieu {
+    padding: 30px;
+    font-weight: 700;
+    width: 100%;
+}
+
+.gioi_thieu .title {
+    font-size: 30px;
+    padding-bottom: 10px;
+    color: #04532e;
+}
+
+.button_big {
+    background-color: #008848;
+    color: #fff;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 12px 22px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.button_big:focus {
+    border: none;
+    outline: none;
+}
+.button_big:hover {
+    background-color: #04532e;
+}
